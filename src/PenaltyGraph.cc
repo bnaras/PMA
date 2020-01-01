@@ -122,7 +122,7 @@ void PenaltyGraph::subGraphGetEdges(MaxFlowGraph& m, list<pair<int,double> >& no
         nodePull.push_front(foo); // total pull on the node
     }
     m.groupDeriv/=m.nodeMapExtToInt.size(); // calculate the derivate for the group value as the mean of the pulls
-};
+}
 
 void PenaltyGraph::subGraphSourceSink(MaxFlowGraph& m, list<pair<int, double> >& nodePull)
 {

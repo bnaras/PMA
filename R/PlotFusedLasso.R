@@ -26,7 +26,8 @@
 #' figure.
 #' @seealso \link{PMD}, \link{PMD.cv}, \link{CCA}, \link{CCA.permute}
 #' @references
-#' \insertRef{pmid19377034}{PMA}
+#' Witten D. M., Tibshirani R.,  and Hastie, T. (2009)
+#' \emph{A penalized matrix decomposition, with applications to sparse principal components and canonical correlation analysis}, \emph{Biostatistics, Gol 10 (3), 515-534, Jul 2009}\cr
 #' @examples
 #'
 #' # Use breast data

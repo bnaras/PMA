@@ -5,9 +5,20 @@
 \alias{print.SPC}
 \title{Perform sparse principal component analysis}
 \usage{
-SPC(x, sumabsv = 4, niter = 20, K = 1, orth = FALSE,
-  trace = TRUE, v = NULL, center = TRUE, cnames = NULL,
-  vpos = FALSE, vneg = FALSE, compute.pve = TRUE)
+SPC(
+  x,
+  sumabsv = 4,
+  niter = 20,
+  K = 1,
+  orth = FALSE,
+  trace = TRUE,
+  v = NULL,
+  center = TRUE,
+  cnames = NULL,
+  vpos = FALSE,
+  vneg = FALSE,
+  compute.pve = TRUE
+)
 }
 \arguments{
 \item{x}{Data matrix of dimension $n x p$, which can contain NA for missing
@@ -47,10 +58,6 @@ once and saved.}
 
 \item{compute.pve}{Compute percent variance explained? Default TRUE. If not
 needed, then choose FALSE to save time.}
-
-\item{\dots}{not used.}
-
-\item{verbose}{not used.}
 }
 \value{
 \item{u}{u is output. If you asked for multiple factors then each
@@ -136,7 +143,8 @@ similar results for later components.
 #
 }
 \references{
-\insertRef{pmid19377034}{PMA}
+Witten D. M., Tibshirani R.,  and Hastie, T. (2009)
+\emph{A penalized matrix decomposition, with applications to sparse principal components and canonical correlation analysis}, \emph{Biostatistics, Gol 10 (3), 515-534, Jul 2009}\cr
 }
 \seealso{
 \link{SPC.cv}, \link{PMD}, \link{PMD.cv}

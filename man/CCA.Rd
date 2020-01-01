@@ -6,12 +6,30 @@
 \title{Perform sparse canonical correlation analysis using the penalized matrix
 decomposition.}
 \usage{
-CCA(x, z, typex = c("standard", "ordered"), typez = c("standard",
-  "ordered"), penaltyx = NULL, penaltyz = NULL, K = 1, niter = 15,
-  v = NULL, trace = TRUE, standardize = TRUE, xnames = NULL,
-  znames = NULL, chromx = NULL, chromz = NULL, upos = FALSE,
-  uneg = FALSE, vpos = FALSE, vneg = FALSE, outcome = NULL,
-  y = NULL, cens = NULL)
+CCA(
+  x,
+  z,
+  typex = c("standard", "ordered"),
+  typez = c("standard", "ordered"),
+  penaltyx = NULL,
+  penaltyz = NULL,
+  K = 1,
+  niter = 15,
+  v = NULL,
+  trace = TRUE,
+  standardize = TRUE,
+  xnames = NULL,
+  znames = NULL,
+  chromx = NULL,
+  chromz = NULL,
+  upos = FALSE,
+  uneg = FALSE,
+  vpos = FALSE,
+  vneg = FALSE,
+  outcome = NULL,
+  y = NULL,
+  cens = NULL
+)
 }
 \arguments{
 \item{x}{Data matrix; samples are rows and columns are features. Cannot
@@ -99,10 +117,6 @@ labels (1,2,3,...). Default NULL.}
 
 \item{cens}{If outcome is "survival" then these are censoring statuses for
 each observation. 1 is complete, 0 is censored. Default NULL.}
-
-\item{\dots}{not used.}
-
-\item{verbose}{not used.}
 }
 \value{
 \item{u}{u is output. If you asked for multiple factors then each
@@ -134,7 +148,7 @@ use typez="standard". Similarly for typex.
 
 This function performs the penalized matrix decomposition on the data matrix
 $X'Z$. Therefore, the results should be the same as running the PMD function
-on t(x)\%*\% z. However, when ncol(x)>>nrow(x) and ncol(z)>>nrow(z) then
+on t(x)\\%*\\% z. However, when ncol(x)>>nrow(x) and ncol(z)>>nrow(z) then
 using the CCA function is much faster because it avoids computation of
 $X'Z$.
 
@@ -156,6 +170,7 @@ data.
 
 # first, do CCA with type="standard"
 # A simple simulated example
+set.seed(3189)
 u <- matrix(c(rep(1,25),rep(0,75)),ncol=1)
 v1 <- matrix(c(rep(1,50),rep(0,450)),ncol=1)
 v2 <- matrix(c(rep(0,50),rep(1,50),rep(0,900)),ncol=1)
@@ -230,7 +245,8 @@ detach(breastdata)
 
 }
 \references{
-\insertRef{pmid19377034}{PMA}
+Witten D. M., Tibshirani R.,  and Hastie, T. (2009)
+\emph{A penalized matrix decomposition, with applications to sparse principal components and canonical correlation analysis}, \emph{Biostatistics, Gol 10 (3), 515-534, Jul 2009}\cr
 }
 \seealso{
 \link{PMD},\link{CCA.permute}

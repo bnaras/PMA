@@ -6,9 +6,18 @@
 \alias{print.SPC.cv}
 \title{Perform cross-validation on sparse principal component analysis}
 \usage{
-SPC.cv(x, sumabsvs = seq(1.2, 5, len = 10), nfolds = 5, niter = 5,
-  v = NULL, trace = TRUE, orth = FALSE, center = TRUE,
-  vpos = FALSE, vneg = FALSE)
+SPC.cv(
+  x,
+  sumabsvs = seq(1.2, 5, len = 10),
+  nfolds = 5,
+  niter = 5,
+  v = NULL,
+  trace = TRUE,
+  orth = FALSE,
+  center = TRUE,
+  vpos = FALSE,
+  vneg = FALSE
+)
 }
 \arguments{
 \item{x}{Data matrix of dimension $n x p$, which can contain NA for missing
@@ -112,7 +121,8 @@ running SPC on the raw data $X$.
 #
 }
 \references{
-\insertRef{pmid19377034}{PMA}
+Witten D. M., Tibshirani R.,  and Hastie, T. (2009)
+\emph{A penalized matrix decomposition, with applications to sparse principal components and canonical correlation analysis}, \emph{Biostatistics, Gol 10 (3), 515-534, Jul 2009}\cr
 }
 \seealso{
 \link{SPC}, \link{PMD}, \link{PMD.cv}

@@ -7,9 +7,16 @@
 \title{Select tuning parameters for sparse multiple canonical correlation analysis
 using the penalized matrix decomposition.}
 \usage{
-MultiCCA.permute(xlist, penalties = NULL, ws = NULL,
-  type = "standard", nperms = 10, niter = 3, trace = TRUE,
-  standardize = TRUE)
+MultiCCA.permute(
+  xlist,
+  penalties = NULL,
+  ws = NULL,
+  type = "standard",
+  nperms = 10,
+  niter = 3,
+  trace = TRUE,
+  standardize = TRUE
+)
 }
 \arguments{
 \item{xlist}{A list of length K, where K is the number of data sets on which
@@ -57,10 +64,6 @@ in this case, and otherwise this function can be quite time-consuming.}
 
 \item{standardize}{Should the columns of X and Z be centered (to have mean
 zero) and scaled (to have standard deviation 1)? Default is TRUE.}
-
-\item{x}{not used.}
-
-\item{\dots}{not used.}
 }
 \value{
 \item{zstat}{The vector of z-statistics, one per element of
@@ -105,7 +108,8 @@ just a one-dimensional search in tuning parameter space.
 
 }
 \references{
-\insertRef{pmid19377034}{PMA}
+Witten D. M., Tibshirani R.,  and Hastie, T. (2009)
+\emph{A penalized matrix decomposition, with applications to sparse principal components and canonical correlation analysis}, \emph{Biostatistics, Gol 10 (3), 515-534, Jul 2009}\cr
 }
 \seealso{
 \link{MultiCCA}, \link{CCA.permute}, \link{CCA}

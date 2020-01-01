@@ -4,11 +4,26 @@
 \alias{PMD}
 \title{Get a penalized matrix decomposition for a data matrix.}
 \usage{
-PMD(x, type = c("standard", "ordered"), sumabs = 0.4, sumabsu = 5,
-  sumabsv = NULL, lambda = NULL, niter = 20, K = 1, v = NULL,
-  trace = TRUE, center = TRUE, chrom = NULL, rnames = NULL,
-  cnames = NULL, upos = FALSE, uneg = FALSE, vpos = FALSE,
-  vneg = FALSE)
+PMD(
+  x,
+  type = c("standard", "ordered"),
+  sumabs = 0.4,
+  sumabsu = 5,
+  sumabsv = NULL,
+  lambda = NULL,
+  niter = 20,
+  K = 1,
+  v = NULL,
+  trace = TRUE,
+  center = TRUE,
+  chrom = NULL,
+  rnames = NULL,
+  cnames = NULL,
+  upos = FALSE,
+  uneg = FALSE,
+  vpos = FALSE,
+  vneg = FALSE
+)
 }
 \arguments{
 \item{x}{Data matrix of dimension $n x p$, which can contain NA for missing
@@ -190,7 +205,8 @@ detach(breastdata)
 
 }
 \references{
-\insertRef{pmid19377034}{PMA}
+Witten D. M., Tibshirani R.,  and Hastie, T. (2009)
+\emph{A penalized matrix decomposition, with applications to sparse principal components and canonical correlation analysis}, \emph{Biostatistics, Gol 10 (3), 515-534, Jul 2009}\cr
 }
 \seealso{
 \link{PMD.cv}, \link{SPC}

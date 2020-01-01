@@ -3,12 +3,7 @@
 #' This package is called __PMA__, for __P__enalized __M__ultivariate
 #' __A__nalysis.  It implements three methods: A penalized matrix
 #' decomposition, sparse principal components analysis, and sparse
-#' canonical correlations analysis. All are described in the paper _A
-#' penalized matrix decomposition, with applications to sparse
-#' principal components and canonical correlation analysis_ [Witten,
-#' Tibshirani, Hastie
-#' (2009)](https://doi.org/10.1093/bioinformatics/18.2.337).
-#'
+#' canonical correlations analysis. All are described in the reference below.
 #' The main functions are: `PMD`, `CCA` and `SPC`.
 #'
 #' The first, `PMD`, performs a penalized matrix decomposition.  `CCA`
@@ -23,9 +18,8 @@
 #' @aliases PMA-package PMA
 #' @docType package
 #' @useDynLib PMA
-#' @importFrom Rdpack reprompt
 #' @references
-#' \insertRef{pmid19377034}{PMA}
+#' Witten D. M., Tibshirani R.,  and Hastie, T. (2009) \doi{10.1093/biostatistics/kxp008}.
 #' @keywords package
 NULL
 
@@ -55,8 +49,11 @@ NULL
 #' description for each gene - genepos: a 19672-vector with a nucleotide
 #' position for each gene
 #' @references
-#' \insertRef{pmid17157792}{PMA}
-#' \insertRef{pmid19377034}{PMA}
+#'
+#' Chin K., et. al. (2006) \doi{10.1016/j.ccr.2006.10.009}.
+#'
+#' Witten D. M., Tibshirani R.,  and Hastie, T. (2009) \doi{10.1093/biostatistics/kxp008}.
+#'
 #' @keywords datasets
 #' @examples
 #'

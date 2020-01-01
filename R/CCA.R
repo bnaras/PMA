@@ -105,8 +105,6 @@
 #' labels (1,2,3,...). Default NULL.
 #' @param cens If outcome is "survival" then these are censoring statuses for
 #' each observation. 1 is complete, 0 is censored. Default NULL.
-#' @param \dots not used.
-#' @param verbose not used.
 #' @return \item{u}{u is output. If you asked for multiple factors then each
 #' column of u is a factor. u has dimension nxK if you asked for K factors.}
 #' \item{v}{v is output. If you asked for multiple factors then each column of
@@ -116,11 +114,13 @@
 #' the SVD of x'z. This is saved in case this function will be re-run later.}
 #' @seealso \link{PMD},\link{CCA.permute}
 #' @references
-#' \insertRef{pmid19377034}{PMA}
+#' Witten D. M., Tibshirani R.,  and Hastie, T. (2009)
+#' \emph{A penalized matrix decomposition, with applications to sparse principal components and canonical correlation analysis}, \emph{Biostatistics, Gol 10 (3), 515-534, Jul 2009}\cr
 #' @examples
 #'
 #' # first, do CCA with type="standard"
 #' # A simple simulated example
+#' set.seed(3189)
 #' u <- matrix(c(rep(1,25),rep(0,75)),ncol=1)
 #' v1 <- matrix(c(rep(1,50),rep(0,450)),ncol=1)
 #' v2 <- matrix(c(rep(0,50),rep(1,50),rep(0,900)),ncol=1)
@@ -264,7 +264,8 @@ CCA <- function(x, z, typex=c("standard", "ordered"), typez=c("standard","ordere
   return(out)
 }
 
-
+#' @method print CCA
+#' @export
 print.CCA <- function(x,verbose=FALSE,...){
   cat("Call: ")
   dput(x$call)
@@ -542,7 +543,8 @@ CCA.permute.both <- function(x,z,typex,typez,penaltyxs,penaltyzs,niter,v,trace,n
 }
 
 
-
+#' @method plot CCA.permute
+#' @export
 plot.CCA.permute <- function(x,...){
   penaltyxs <- x$penaltyxs
   penaltyzs <- x$penaltyzs
@@ -773,8 +775,6 @@ CCA.permute.xonly<- function(x,z,typex,typez,penaltyxs,penaltyz,niter,v,trace,np
 #' even if penaltyxs and penaltyzs both are vectors: the pairs
 #' `(penaltyxs[1],penaltyzs[1])`,
 #' `(penaltyxs[2],penaltyzs[2])`,.... are considered.
-#'
-#' @aliases CCA.permute plot.CCA.permute print.CCA.permute
 #' @param x Data matrix; samples are rows and columns are features.
 #' @param z Data matrix; samples are rows and columns are features. Note that x
 #' and z must have the same number of rows, but may (and generally will) have
@@ -842,7 +842,6 @@ CCA.permute.xonly<- function(x,z,typex,typez,penaltyxs,penaltyz,niter,v,trace,np
 #' labels. Default NULL.
 #' @param cens If outcome is "survival" then these are censoring statuses for
 #' each observation. 1 is complete, 0 is censored. Default NULL.
-#' @param \dots not used.
 #' @return \item{zstat}{The vector of z-statistics, one per element of
 #' sumabss.} \item{pvals}{The vector of p-values, one per element of sumabss.}
 #' \item{bestpenaltyx}{The x penalty that resulted in the highest z-statistic.}
@@ -859,8 +858,10 @@ CCA.permute.xonly<- function(x,z,typex,typez,penaltyxs,penaltyz,niter,v,trace,np
 #' of the v matrix of the SVD of x'z. This is saved in case this function (or
 #' the CCA function) will be re-run later.}
 #' @seealso \link{PMD},\link{CCA}
+#'
 #' @references
-#' \insertRef{pmid19377034}{PMA}
+#' Witten D. M., Tibshirani R.,  and Hastie, T. (2009)
+#' \emph{A penalized matrix decomposition, with applications to sparse principal components and canonical correlation analysis}, \emph{Biostatistics, Gol 10 (3), 515-534, Jul 2009}\cr
 #' @examples
 #'
 #' # See examples in CCA function
@@ -903,6 +904,9 @@ CCA.permute <- function(x,z,typex=c("standard", "ordered"), typez=c("standard","
   return(out)
 }
 
+
+#' @method print CCA.permute
+#' @export
 print.CCA.permute <- function(x,...){
   cat("Call: ")
   dput(x$call)

@@ -4,11 +4,24 @@
 \alias{PMD.cv}
 \title{Do tuning parameter selection for PMD via cross-validation}
 \usage{
-PMD.cv(x, type = c("standard", "ordered"), sumabss = seq(0.1, 0.7, len
-  = 10), sumabsus = NULL, lambda = NULL, nfolds = 5, niter = 5,
-  v = NULL, chrom = NULL, nuc = NULL, trace = TRUE,
-  center = TRUE, upos = FALSE, uneg = FALSE, vpos = FALSE,
-  vneg = FALSE)
+PMD.cv(
+  x,
+  type = c("standard", "ordered"),
+  sumabss = seq(0.1, 0.7, len = 10),
+  sumabsus = NULL,
+  lambda = NULL,
+  nfolds = 5,
+  niter = 5,
+  v = NULL,
+  chrom = NULL,
+  nuc = NULL,
+  trace = TRUE,
+  center = TRUE,
+  upos = FALSE,
+  uneg = FALSE,
+  vpos = FALSE,
+  vneg = FALSE
+)
 }
 \arguments{
 \item{x}{Data matrix of dimension $n x p$, which can contain NA for missing
@@ -114,15 +127,11 @@ computed, and then this function should be performed on the residuals, given
 by $x-udv'$.
 }
 \examples{
-
-
 # See examples in PMD help file
-
-
-
 }
 \references{
-\insertRef{pmid19377034}{PMA}
+Witten D. M., Tibshirani R.,  and Hastie, T. (2009)
+\emph{A penalized matrix decomposition, with applications to sparse principal components and canonical correlation analysis}, \emph{Biostatistics, Gol 10 (3), 515-534, Jul 2009}\cr
 }
 \seealso{
 \link{PMD}, \link{SPC}

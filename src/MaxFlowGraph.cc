@@ -729,7 +729,7 @@ set<int> MaxFlowGraph::reachableFromSource(const int sourceNode)
     // reachable nodes are all nodes in parent except source and sink
     for(unsigned int i=2; i !=distReach.size(); ++i)
     {
-        if(distReach[i]<nodes.size())
+      if(((unsigned int) distReach[i])<nodes.size())
         {
             // node is reachable; insert node in external notation
             reachable.insert(nodeMapIntToExt[i]); 

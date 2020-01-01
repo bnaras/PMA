@@ -5,9 +5,16 @@
 \alias{print.MultiCCA}
 \title{Perform sparse multiple canonical correlation analysis.}
 \usage{
-MultiCCA(xlist, penalty = NULL, ws = NULL, niter = 25,
-  type = "standard", ncomponents = 1, trace = TRUE,
-  standardize = TRUE)
+MultiCCA(
+  xlist,
+  penalty = NULL,
+  ws = NULL,
+  niter = 25,
+  type = "standard",
+  ncomponents = 1,
+  trace = TRUE,
+  standardize = TRUE
+)
 }
 \arguments{
 \item{xlist}{A list of length K, where K is the number of data sets on which
@@ -44,10 +51,6 @@ data sets are of the same type).}
 
 \item{standardize}{Should the columns of $X1,...,XK$ be centered (to have
 mean zero) and scaled (to have standard deviation 1)? Default is TRUE.}
-
-\item{x}{not used.}
-
-\item{\dots}{not used.}
 }
 \value{
 \item{ws}{A list of length K, containg the sparse canonical variates
@@ -67,6 +70,7 @@ may (and usually will) have different numbers of columns.
 
 # Generate 3 data sets so that first 25 features are correlated across
 # the data sets...
+set.seed(123)
 u <- matrix(rnorm(50),ncol=1)
 v1 <- matrix(c(rep(.5,25),rep(0,75)),ncol=1)
 v2 <- matrix(c(rep(1,25),rep(0,25)),ncol=1)
@@ -107,7 +111,8 @@ PlotCGH(out$ws[[3]], chrom=rep(3,ncol(x3)))
 
 }
 \references{
-\insertRef{pmid19377034}{PMA}
+Witten D. M., Tibshirani R.,  and Hastie, T. (2009)
+\emph{A penalized matrix decomposition, with applications to sparse principal components and canonical correlation analysis}, \emph{Biostatistics, Gol 10 (3), 515-534, Jul 2009}\cr
 }
 \seealso{
 \link{MultiCCA.permute},\link{CCA}, \link{CCA.permute}

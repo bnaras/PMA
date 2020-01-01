@@ -4,7 +4,7 @@
 
 void Groups::inactivateGroup(int grp, double lambda)
 {
-  if(grp>= groups.size()) // nothing to inactivate as this group does not exist
+  if(((unsigned int) grp) >= groups.size()) // nothing to inactivate as this group does not exist
     {
         return;
     }

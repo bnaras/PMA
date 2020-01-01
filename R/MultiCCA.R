@@ -119,8 +119,6 @@ ftrans <- function(x){ return(.5*log((1+x)/(1-x))) }
 #' is very small.
 #' @param standardize Should the columns of X and Z be centered (to have mean
 #' zero) and scaled (to have standard deviation 1)? Default is TRUE.
-#' @param x not used.
-#' @param \dots not used.
 #' @return \item{zstat}{The vector of z-statistics, one per element of
 #' penalties.} \item{pvals}{The vector of p-values, one per element of
 #' penalties.} \item{bestpenalties}{The best set of penalties (the one with the
@@ -132,7 +130,8 @@ ftrans <- function(x){ return(.5*log((1+x)/(1-x))) }
 #' \item{ws.init}{Initial values used for ws in sparse multiple CCA algorithm.}
 #' @seealso \link{MultiCCA}, \link{CCA.permute}, \link{CCA}
 #' @references
-#' \insertRef{pmid19377034}{PMA}
+#' Witten D. M., Tibshirani R.,  and Hastie, T. (2009)
+#' \emph{A penalized matrix decomposition, with applications to sparse principal components and canonical correlation analysis}, \emph{Biostatistics, Gol 10 (3), 515-534, Jul 2009}\cr
 #' @importFrom graphics lines par plot points segments text title
 #' @importFrom stats cor lowess lsfit quantile rnorm runif sd
 #' @examples
@@ -239,19 +238,19 @@ MultiCCA.permute <- function(xlist, penalties=NULL, ws=NULL, type="standard", np
 #' @param trace Print out progress?
 #' @param standardize Should the columns of $X1,...,XK$ be centered (to have
 #' mean zero) and scaled (to have standard deviation 1)? Default is TRUE.
-#' @param x not used.
-#' @param \dots not used.
 #' @return \item{ws}{A list of length K, containg the sparse canonical variates
 #' found (element k is a $p_k x ncomponents$ matrix).} \item{ws.init}{A list of
 #' length K containing the initial values of ws used, by default these are the
 #' v vector of the svd of matrix Xk.}
 #' @seealso \link{MultiCCA.permute},\link{CCA}, \link{CCA.permute}
 #' @references
-#' \insertRef{pmid19377034}{PMA}
+#' Witten D. M., Tibshirani R.,  and Hastie, T. (2009)
+#' \emph{A penalized matrix decomposition, with applications to sparse principal components and canonical correlation analysis}, \emph{Biostatistics, Gol 10 (3), 515-534, Jul 2009}\cr
 #' @examples
 #'
 #' # Generate 3 data sets so that first 25 features are correlated across
 #' # the data sets...
+#' set.seed(123)
 #' u <- matrix(rnorm(50),ncol=1)
 #' v1 <- matrix(c(rep(.5,25),rep(0,75)),ncol=1)
 #' v2 <- matrix(c(rep(1,25),rep(0,25)),ncol=1)
@@ -378,7 +377,8 @@ print.MultiCCA <- function(x,...){
 
 
 
-
+#' @method print MultiCCA.permute
+#' @export
 print.MultiCCA.permute <- function(x,...){
   cat("Call: ")
   dput(x$call)
@@ -397,6 +397,9 @@ print.MultiCCA.permute <- function(x,...){
   print(sumabslamvecs,quote=FALSE)
 }
 
+
+#' @method plot MultiCCA.permute
+#' @export
 plot.MultiCCA.permute <- function(x,...){
   sumabss <- x$penalties
   ccs <- x$cors

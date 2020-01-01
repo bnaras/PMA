@@ -185,8 +185,6 @@ CheckPMDV <-  function(v,x,K){
 #' @param vneg Constrain the elements of v to be negative? TRUE or FALSE.
 #' @param compute.pve Compute percent variance explained? Default TRUE. If not
 #' needed, then choose FALSE to save time.
-#' @param \dots not used.
-#' @param verbose not used.
 #' @return \item{u}{u is output. If you asked for multiple factors then each
 #' column of u is a factor. u has dimension nxK if you asked for K factors.}
 #' \item{v}{v is output. These are the sparse principal components. If you
@@ -206,7 +204,8 @@ CheckPMDV <-  function(v,x,K){
 #' subtracted out before SPC was performed.}
 #' @seealso \link{SPC.cv}, \link{PMD}, \link{PMD.cv}
 #' @references
-#' \insertRef{pmid19377034}{PMA}
+#' Witten D. M., Tibshirani R.,  and Hastie, T. (2009)
+#' \emph{A penalized matrix decomposition, with applications to sparse principal components and canonical correlation analysis}, \emph{Biostatistics, Gol 10 (3), 515-534, Jul 2009}\cr
 #' @examples
 #'
 #'
@@ -272,6 +271,8 @@ SPC <- function(x, sumabsv=4, niter=20, K=1, orth=FALSE, trace=TRUE, v=NULL, cen
   return(out)
 }
 
+#' @method print SPC
+#' @export
 print.SPC <- function(x,verbose=FALSE,...){
   cat("Call: ")
   dput(x$call)
@@ -386,7 +387,8 @@ print.SPC <- function(x,verbose=FALSE,...){
 #' \item{meanx}{Mean of x that was subtracted out before PMD was performed.}
 #' @seealso \link{PMD.cv}, \link{SPC}
 #' @references
-#' \insertRef{pmid19377034}{PMA}
+#' Witten D. M., Tibshirani R.,  and Hastie, T. (2009)
+#' \emph{A penalized matrix decomposition, with applications to sparse principal components and canonical correlation analysis}, \emph{Biostatistics, Gol 10 (3), 515-534, Jul 2009}\cr
 #' @examples
 #'
 #'
@@ -571,14 +573,10 @@ PMD <- function(x, type=c("standard", "ordered"), sumabs=.4, sumabsu=5, sumabsv=
 #' time if PMD will be run again.}
 #' @seealso \link{PMD}, \link{SPC}
 #' @references
-#' \insertRef{pmid19377034}{PMA}
+#' Witten D. M., Tibshirani R.,  and Hastie, T. (2009)
+#' \emph{A penalized matrix decomposition, with applications to sparse principal components and canonical correlation analysis}, \emph{Biostatistics, Gol 10 (3), 515-534, Jul 2009}\cr
 #' @examples
-#'
-#'
 #' # See examples in PMD help file
-#'
-#'
-#'
 #' @export PMD.cv
 PMD.cv <- function(x, type=c("standard", "ordered"), sumabss=seq(0.1,0.7,len=10), sumabsus=NULL, lambda=NULL, nfolds=5, niter=5, v=NULL, chrom=NULL, nuc=NULL, trace=TRUE, center=TRUE, upos=FALSE, uneg=FALSE, vpos=FALSE, vneg=FALSE){
   if(upos&&uneg || vpos&&vneg) stop("Cannot contrain elements to be both positive and negative!")
@@ -633,6 +631,8 @@ PMDL1L1 <- function(x,sumabs=.4,sumabsu=NULL,sumabsv=NULL,niter=20,K=1,v=NULL, t
   return(obj)
 }
 
+#' @method print PMDL1L1
+#' @export
 print.PMDL1L1 <- function(x,verbose=FALSE,...){
   cat("Call: ")
   dput(x$call)
@@ -665,6 +665,8 @@ print.PMDL1L1 <- function(x,verbose=FALSE,...){
   if(x$vneg) cat("Elements of v constrained to be negative.", fill=TRUE)
 }
 
+#' @method print PMDL1FL
+#' @export
 print.PMDL1FL <- function(x,verbose=FALSE,...){
   cat("Call: ")
   dput(x$call)
@@ -836,7 +838,8 @@ PMDL1L1.cv <- function(x, sumabss=seq(0.1,0.7,len=10), nfolds=5, niter=5, v=NULL
 #' standard error of smallest CV error.}
 #' @seealso \link{SPC}, \link{PMD}, \link{PMD.cv}
 #' @references
-#' \insertRef{pmid19377034}{PMA}
+#' Witten D. M., Tibshirani R.,  and Hastie, T. (2009)
+#' \emph{A penalized matrix decomposition, with applications to sparse principal components and canonical correlation analysis}, \emph{Biostatistics, Gol 10 (3), 515-534, Jul 2009}\cr
 #' @examples
 #'
 #' #NOT RUN
@@ -902,6 +905,8 @@ SPC.cv <- function(x, sumabsvs=seq(1.2,5,len=10), nfolds=5, niter=5, v=NULL, tra
   return(object)
 }
 
+#' @method plot SPC.cv
+#' @export
 plot.SPC.cv <- function(x,...){
   sumabsvs <- x$sumabsvs
   err.means <- x$cv
@@ -912,8 +917,8 @@ plot.SPC.cv <- function(x,...){
   lines(sumabsvs, err.means-err.sds, lty="dashed")
 }
 
-
-
+#' @method print SPC.cv
+#' @export
 print.SPC.cv <- function(x,...){
   cat("Call:\n")
   dput(x$call)
@@ -928,6 +933,9 @@ print.SPC.cv <- function(x,...){
   if(x$vneg) cat("Elements of v constrained to be negative.", fill=TRUE)
 }
 
+
+#' @method print PMDL1L1.cv
+#' @export
 print.PMDL1L1.cv <- function(x,...){
   cat("Call:\n")
   dput(x$call)
@@ -943,6 +951,8 @@ print.PMDL1L1.cv <- function(x,...){
   if(x$vneg) cat("Elements of v constrained to be negative.", fill=TRUE)
 }
 
+#' @method plot PMDL1L1.cv
+#' @export
 plot.PMDL1L1.cv <- function(x,...){
   sumabss <- x$sumabss
   err.means <- x$cv
@@ -992,6 +1002,8 @@ PMDL1FL.cv <- function(x, nfolds=5, niter=5, lambda=NULL, sumabsus=NULL, chrom=N
   return(object)
 }
 
+#' @method plot PMDL1FL.cv
+#' @export
 plot.PMDL1FL.cv <- function(x,...){
   mat <- x$x
   sumabsus <- x$sumabsus
@@ -1012,6 +1024,8 @@ plot.PMDL1FL.cv <- function(x,...){
   PlotCGH(out$v, main="Best V", chrom=chrom, nuc=nuc)
 }
 
+#' @method print PMDL1FL.cv
+#' @export
 print.PMDL1FL.cv <- function(x,...){
   cat("Call:\n")
   dput(x$call)

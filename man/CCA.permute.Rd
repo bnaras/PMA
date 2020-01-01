@@ -2,17 +2,31 @@
 % Please edit documentation in R/CCA.R
 \name{CCA.permute}
 \alias{CCA.permute}
-\alias{plot.CCA.permute}
-\alias{print.CCA.permute}
 \title{Select tuning parameters for sparse canonical correlation analysis using the
 penalized matrix decomposition.}
 \usage{
-CCA.permute(x, z, typex = c("standard", "ordered"),
-  typez = c("standard", "ordered"), penaltyxs = NULL,
-  penaltyzs = NULL, niter = 3, v = NULL, trace = TRUE,
-  nperms = 25, standardize = TRUE, chromx = NULL, chromz = NULL,
-  upos = FALSE, uneg = FALSE, vpos = FALSE, vneg = FALSE,
-  outcome = NULL, y = NULL, cens = NULL)
+CCA.permute(
+  x,
+  z,
+  typex = c("standard", "ordered"),
+  typez = c("standard", "ordered"),
+  penaltyxs = NULL,
+  penaltyzs = NULL,
+  niter = 3,
+  v = NULL,
+  trace = TRUE,
+  nperms = 25,
+  standardize = TRUE,
+  chromx = NULL,
+  chromz = NULL,
+  upos = FALSE,
+  uneg = FALSE,
+  vpos = FALSE,
+  vneg = FALSE,
+  outcome = NULL,
+  y = NULL,
+  cens = NULL
+)
 }
 \arguments{
 \item{x}{Data matrix; samples are rows and columns are features.}
@@ -101,8 +115,6 @@ labels. Default NULL.}
 
 \item{cens}{If outcome is "survival" then these are censoring statuses for
 each observation. 1 is complete, 0 is censored. Default NULL.}
-
-\item{\dots}{not used.}
 }
 \value{
 \item{zstat}{The vector of z-statistics, one per element of
@@ -157,8 +169,8 @@ considered in selection of the tuning parameter.
 Note that x and z must have same number of rows. This function
 performs just a one-dimensional search in tuning parameter space,
 even if penaltyxs and penaltyzs both are vectors: the pairs
-\code{(penaltyxs[1],penaltyzs[1])},
-\code{(penaltyxs[2],penaltyzs[2])},.... are considered.
+\verb{(penaltyxs[1],penaltyzs[1])},
+\verb{(penaltyxs[2],penaltyzs[2])},.... are considered.
 }
 \examples{
 
@@ -166,7 +178,8 @@ even if penaltyxs and penaltyzs both are vectors: the pairs
 
 }
 \references{
-\insertRef{pmid19377034}{PMA}
+Witten D. M., Tibshirani R.,  and Hastie, T. (2009)
+\emph{A penalized matrix decomposition, with applications to sparse principal components and canonical correlation analysis}, \emph{Biostatistics, Gol 10 (3), 515-534, Jul 2009}\cr
 }
 \seealso{
 \link{PMD},\link{CCA}

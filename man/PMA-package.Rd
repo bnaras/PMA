@@ -9,13 +9,10 @@
 This package is called \strong{PMA}, for __P__enalized __M__ultivariate
 __A__nalysis.  It implements three methods: A penalized matrix
 decomposition, sparse principal components analysis, and sparse
-canonical correlations analysis. All are described in the paper \emph{A
-penalized matrix decomposition, with applications to sparse
-principal components and canonical correlation analysis} \href{https://doi.org/10.1093/bioinformatics/18.2.337}{Witten, Tibshirani, Hastie (2009)}.
+canonical correlations analysis. All are described in the reference below.
+The main functions are: \code{PMD}, \code{CCA} and \code{SPC}.
 }
 \details{
-The main functions are: \code{PMD}, \code{CCA} and \code{SPC}.
-
 The first, \code{PMD}, performs a penalized matrix decomposition.  \code{CCA}
 performs sparse canonical correlation analysis. \code{SPC} performs sparse
 principal components analysis.
@@ -25,6 +22,6 @@ each of the above methods: \code{SPC.cv}, \code{PMD.cv}, \code{CCA.permute}. And
 nice plots for DNA copy number data.
 }
 \references{
-\insertRef{pmid19377034}{PMA}
+Witten D. M., Tibshirani R.,  and Hastie, T. (2009) \doi{10.1093/biostatistics/kxp008}.
 }
 \keyword{package}
