@@ -1,0 +1,28 @@
+Package: PMA
+Type: Package
+Title: Penalized Multivariate Analysis
+Version: 1.2
+Date: 2019-05-22
+URL: https://github.com/bnaras/PMA
+BugReports: https://github.com/bnaras/PMA/issues
+Authors@R: c(person("Daniela", "Witten", role=c("aut")),
+	   person("Robert", "Tibshirani", email = "tibs@stanford.edu", role=c("aut", "cre")),
+	   person("Sam", "Gross", role=c("aut")),
+	   person("Balasubramanian", "Narasimhan", role=c("aut"),
+	   	   email = "naras@stat.stanford.edu"))
+Description: Performs Penalized Multivariate Analysis: a penalized
+        matrix decomposition, sparse principal components analysis, and
+        sparse canonical correlation analysis, described in the
+        following papers: (1) Witten, Tibshirani and Hastie (2009) A
+        penalized matrix decomposition, with applications to sparse
+        principal components and canonical correlation analysis.
+        Biostatistics 10(3):515-534. (2) Witten and Tibshirani (2009)
+        Extensions of sparse canonical correlation analysis, with
+        applications to genomic data. Statistical Applications in
+        Genetics and Molecular Biology 8(1): Article 28.
+License: GPL (>= 2)
+Imports: Rdpack
+RdMacros: Rdpack
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.1
