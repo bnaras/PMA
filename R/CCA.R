@@ -464,7 +464,8 @@ SparseCCA <- function(x,y,v,typex,typez,penaltyx, penaltyz,niter,trace, upos, un
 }
 
 CheckVs <- function(v,x,z,K){ # If v is NULL, then get v as appropriate.
-  if(!is.null(v) && !is.matrix(v)) v <- matrix(v,nrow=ncol(z))
+    print(list(v=v, x = x, z = z, K = k))
+    if(!is.null(v) && !is.matrix(v)) v <- matrix(v,nrow=ncol(z))
   if(!is.null(v) && ncol(v)<K) v <- NULL
   if(!is.null(v) && ncol(v)>K) v <- matrix(v[,1:K],ncol=K)
   if(is.null(v) && ncol(z)>nrow(z) && ncol(x)>nrow(x)){
