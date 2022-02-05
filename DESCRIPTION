@@ -1,12 +1,12 @@
 Package: PMA
 Type: Package
 Title: Penalized Multivariate Analysis
-Version: 1.2
-Date: 2019-12-31
+Version: 1.2-2
+Date: 2022-02-05
 URL: https://github.com/bnaras/PMA
 BugReports: https://github.com/bnaras/PMA/issues
 Authors@R: c(person("Daniela", "Witten", role=c("aut")),
-	   person("Robert", "Tibshirani", email = "tibs@stanford.edu", role=c("aut", "cre")),
+	   person("Rob", "Tibshirani", email = "tibs@stanford.edu", role=c("aut", "cre")),
 	   person("Sam", "Gross", role=c("aut")),
 	   person("Balasubramanian", "Narasimhan", role=c("aut"),
 	   	   email = "naras@stat.stanford.edu"))
@@ -22,4 +22,4 @@ Depends: R (>= 2.10)
 License: GPL (>= 2)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.2

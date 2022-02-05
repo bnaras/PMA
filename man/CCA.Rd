@@ -18,8 +18,8 @@ CCA(
   v = NULL,
   trace = TRUE,
   standardize = TRUE,
-  xnames = NULL,
-  znames = NULL,
+  xnames = names(x),
+  znames = names(z),
   chromx = NULL,
   chromz = NULL,
   upos = FALSE,
@@ -78,9 +78,9 @@ be time-consuming if X and Z both have high dimension).}
 \item{standardize}{Should the columns of x and z be centered (to have mean
 zero) and scaled (to have standard deviation 1)? Default is TRUE.}
 
-\item{xnames}{An optional vector of column names for x.}
+\item{xnames}{An optional vector of column names for x, defaults to \code{names(x)}}
 
-\item{znames}{An optional vector of column names for z.}
+\item{znames}{An optional vector of column names for z, defaults to \code{names(z)}}
 
 \item{chromx}{Used only if typex is "ordered"; allows user to specify a
 vector of length ncol(x) giving the chromosomal location of each CGH spot.

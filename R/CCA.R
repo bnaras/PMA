@@ -76,8 +76,8 @@
 #' @param trace Print out progress?
 #' @param standardize Should the columns of x and z be centered (to have mean
 #' zero) and scaled (to have standard deviation 1)? Default is TRUE.
-#' @param xnames An optional vector of column names for x.
-#' @param znames An optional vector of column names for z.
+#' @param xnames An optional vector of column names for x, defaults to `names(x)`
+#' @param znames An optional vector of column names for z, defaults to `names(z)`
 #' @param chromx Used only if typex is "ordered"; allows user to specify a
 #' vector of length ncol(x) giving the chromosomal location of each CGH spot.
 #' This is so that smoothness will be enforced within each chromosome, but not
@@ -194,7 +194,7 @@
 #' }
 #'
 #' @export CCA
-CCA <- function(x, z, typex=c("standard", "ordered"), typez=c("standard","ordered"), penaltyx=NULL, penaltyz=NULL, K=1, niter=15, v=NULL, trace=TRUE, standardize=TRUE, xnames=NULL, znames=NULL, chromx=NULL, chromz=NULL, upos=FALSE, uneg=FALSE, vpos=FALSE, vneg=FALSE, outcome=NULL, y=NULL, cens=NULL){
+CCA <- function(x, z, typex=c("standard", "ordered"), typez=c("standard","ordered"), penaltyx=NULL, penaltyz=NULL, K=1, niter=15, v=NULL, trace=TRUE, standardize=TRUE, xnames=names(x), znames=names(z), chromx=NULL, chromz=NULL, upos=FALSE, uneg=FALSE, vpos=FALSE, vneg=FALSE, outcome=NULL, y=NULL, cens=NULL){
   if(ncol(x)<2) stop("Need at least two features in dataset x.")
   if(ncol(z)<2) stop("Need at least two features in dataset z.")
   if(upos && uneg) stop("At most one of upos and uneg should be TRUE!")

@@ -826,7 +826,6 @@ PMDL1L1.cv <- function(x, sumabss=seq(0.1,0.7,len=10), nfolds=5, niter=5, v=NULL
 #' @param center Subtract out mean of x? Default is TRUE
 #' @param vpos Constrain elements of v to be positive? Default is FALSE.
 #' @param vneg Constrain elements of v to be negative? Default is FALSE.
-#' @param \dots not used.
 #' @return \item{cv}{Average sum of squared errors that results for each tuning
 #' parameter value.} \item{cv.error}{Standard error of the average sum of
 #' squared error that results for each tuning parameter value.}
