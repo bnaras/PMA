@@ -2,7 +2,7 @@ soft <- function(x,d){
   return(sign(x)*pmax(0, abs(x)-d))
 }
 
-mean.na <- function(vec){
+mean_na <- function(vec){
   return(mean(vec[!is.na(vec)]))
 }
 

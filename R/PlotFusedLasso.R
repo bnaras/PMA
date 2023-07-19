@@ -63,10 +63,10 @@ PlotCGH <- function(array,chrom=NULL,nuc=NULL,main="", scaleEachChrom=TRUE){
   } else {
     scaledarray <- array/(.9*max(abs(array)))
   }
-  plot.CGH.FL.Single(scaledarray,chrom,nuc,main)
+  plot_CGH_FL_Single(scaledarray,chrom,nuc,main)
 }
 
-plot.CGH.FL.Single<-function(array, chr, nucposi, main=""){
+plot_CGH_FL_Single<-function(array, chr, nucposi, main=""){
   if(length(array)!=length(chr) || length(array)!=length(nucposi)) stop("Array, chrom, and nuc must all have the same length (or chrom & nuc can be NULL).")
   plot(0,0,type="n",axes=F,ylim=c(0,length(unique(chr))+1),xlim=c(-.05*max(nucposi), max(nucposi)),ylab="",xlab="",main=main,cex.main=1)
   for(j in 1:length((unique(chr)))){

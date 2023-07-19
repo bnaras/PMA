@@ -43,7 +43,7 @@ ChooseLambda1Lambda2old <- function(y,chrom=NULL){ # old as of 8/25/09
 CGH.SMD <- function(x,lam1,lam2,sumabsu,chrom,niter=20,v, trace, upos, uneg){
   nas <- is.na(x)
   xoo <- x
-  xoo[nas] <- mean.na(x)
+  xoo[nas] <- mean_na(x)
   vold <- rnorm(length(v))
   for(i in 1:niter){
     if(sum(abs(vold-v))>1e-5 && sum(abs(v))!=0){
@@ -89,7 +89,7 @@ MultiCGH.SMD <- function(x,K,lam1,lam2,sumabsu,chrom,niter,v, trace, upos, uneg)
 PMDL1FL <- function(x,K=1,sumabsu=5,lambda=NULL,chrom=NULL,niter=20, v=NULL, trace=TRUE, center=TRUE, rnames=NULL, cnames=NULL, upos, uneg){
   call <- match.call()
   if(center){
-    meanx <- mean.na(x)
+    meanx <- mean_na(x)
     x <- x-meanx
   } else {
     meanx <- NULL
