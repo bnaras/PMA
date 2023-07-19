@@ -186,14 +186,13 @@ Groups::Groups(SEXP solution)
 
 int Groups::addNewGroup(double lambda, double mu, MaxFlowGraph* m, bool initial)
 {
-    groupItem g;
+  groupItem g = {};
     // fill out the group item
     g.lambda = lambda;
     g.mu=mu;
     g.active=true;
     g.deriv = m->getGroupDeriv();
     g.m = m;
-    g.action = 'M'; // Added by Naras
     g.endLambda=infinite;
     g.size = m->size();
     
