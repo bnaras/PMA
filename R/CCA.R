@@ -347,7 +347,7 @@ fastsvd <- function(x,z){
   y=t(z)%*%xx2
   a=try(svd(y), silent=TRUE)
   iter <- 1
-  if(class(a)=="try-error" && iter<10){
+  if(inherits(a, "try-error") && iter<10){
     a=try(svd(y), silent=TRUE)
     iter <- iter+1
   }
@@ -359,7 +359,7 @@ fastsvd <- function(x,z){
   y=t(x)%*%zz2
   a=try(svd(y), silent=TRUE)
   iter <- 1
-  if(class(a)=="try-error" && iter<10){
+  if(inherits(a, "try-error") && iter<10){
     a=try(svd(y), silent=TRUE)
     iter <- iter+1
   }

@@ -54,6 +54,7 @@ NULL
 #'
 #' Witten D. M., Tibshirani R.,  and Hastie, T. (2009) \doi{10.1093/biostatistics/kxp008}.
 #'
+#' Must be downloaded from https://tibshirani.su.domains/PMA/
 #' @keywords datasets
 #' @examples
 #'

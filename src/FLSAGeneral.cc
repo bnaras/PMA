@@ -1,8 +1,5 @@
 #include <fstream>
 #include <vector>
-#include <R.h>
-#include <Rinternals.h>
-#include <R_ext/Utils.h>
 #include "FLSAGeneral.h"
 #include "MaxFlowGraph.h"
 

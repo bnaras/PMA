@@ -2,14 +2,14 @@ Package: PMA
 Type: Package
 Title: Penalized Multivariate Analysis
 Version: 1.2-2
-Date: 2022-02-05
+Date: 2023-07-19
 URL: https://github.com/bnaras/PMA
 BugReports: https://github.com/bnaras/PMA/issues
-Authors@R: c(person("Daniela", "Witten", role=c("aut")),
-	   person("Rob", "Tibshirani", email = "tibs@stanford.edu", role=c("aut", "cre")),
-	   person("Sam", "Gross", role=c("aut")),
-	   person("Balasubramanian", "Narasimhan", role=c("aut"),
-	   	   email = "naras@stat.stanford.edu"))
+Authors@R: c(person("Daniela", "Witten", role = c("aut")),
+	   person("Rob", "Tibshirani", email = "tibs@stanford.edu", role = c("aut", "cre")),
+	   person("Sam", "Gross", role = c("aut")),
+	   person("Balasubramanian", "Narasimhan", role = c("aut"),
+	   	   email = "naras@stanford.edu"))
 Description: Performs Penalized Multivariate Analysis: a penalized
         matrix decomposition, sparse principal components analysis,
         and sparse canonical correlation analysis, described in
@@ -22,4 +22,4 @@ Depends: R (>= 2.10)
 License: GPL (>= 2)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3

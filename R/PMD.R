@@ -15,11 +15,11 @@ l2n <- function(vec){
 safesvd <- function(x){
   i <- 1
   out <- try(svd(x), silent=TRUE)
-  while(i<10 && class(out)=="try-error"){
+  while(i<10 && inherits(out, "try-error")){
     out <- try(svd(x), silent=TRUE)
     i <- i+1
   }
-  if(class(out)=="try-error") out <- svd(matrix(rnorm(nrow(x)*ncol(x)), ncol=ncol(x)))
+  if(inherits(out, "try-error")) out <- svd(matrix(rnorm(nrow(x)*ncol(x)), ncol=ncol(x)))
   return(out)
 }
 
