@@ -1,5 +1,3 @@
-#include <R.h>
-#include <Rinternals.h>
 #include <vector>
 #include <map>
 #include "FLSA.h"

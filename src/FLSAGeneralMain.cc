@@ -1,8 +1,5 @@
 #include <iostream>
 #include <fstream>
-#include <R.h>
-#include <Rinternals.h>
-#include <Rdefines.h>
 #include "PenaltyGraph.h"
 #include "MaxFlowGraph.h"
 #include "Groups.h"
@@ -107,14 +104,14 @@ vector<double> readY(char* fileName)
     ifstream inputFile;
     list<double> help;
     double foo;
-    int i=0;
+    // int i=0;
     
     inputFile.open(fileName,ios::in);
     
     while(inputFile >> foo)
     {
         help.push_back(foo);
-        ++i;
+        // ++i;
     }
     
     vector<double> y(help.size());

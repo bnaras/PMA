@@ -3,8 +3,6 @@
 #include <queue>
 #include <fstream>
 #include <sstream>
-#include <R.h>
-#include <Rinternals.h>
 
 
 void MaxFlowGraph::addEdgeCap(int from, int to, double capacity)

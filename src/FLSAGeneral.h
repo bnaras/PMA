@@ -10,6 +10,10 @@
 #ifndef _FLSAGENERAL_
 #define _FLSAGENERAL_
 
+#include <R.h>
+#include <Rinternals.h>
+#include <R_ext/Utils.h>
+#include <Rdefines.h>
 #include "PenaltyGraph.h"
 #include "MaxFlowGraph.h"
 #include "Scheduler.h"

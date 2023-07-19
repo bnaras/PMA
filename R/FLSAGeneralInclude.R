@@ -36,7 +36,7 @@ connListTwoDimensions = function(dimensions)
 
 is.connListObj = function(obj)
 {
-    if(class(obj)!="connListObj")
+    if(inherits(obj, "connListObj"))
     {
         stop("Object does not have the right class")
     }
@@ -166,7 +166,7 @@ FLSAGetSolution = function(solObj, lambda2, lambda1=0, dim=NULL)
     ### check that lambda2 is ok
     lambda2 = checkLambda2(lambda2)
 
-    if(class(solObj)=="FLSA")
+    if(inherits(solObj, "FLSA"))
     {
         res = FLSAOneDimExplicitSolution(solObj, lambda2)
         if(lambda1!=0)
@@ -175,7 +175,7 @@ FLSAGetSolution = function(solObj, lambda2, lambda1=0, dim=NULL)
         }
         return(res)
     }
-    else if(class(solObj)=="FLSAGeneral")
+    else if(inherits(solObj, "FLSAGeneral"))
     {
         ### calculate the explicit solution
         nodes = as.integer(which(solObj$InitialNodeMap>=0)-1)
