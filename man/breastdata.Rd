@@ -40,7 +40,5 @@ detach(breastdata)
 Chin K., et. al. (2006) \doi{10.1016/j.ccr.2006.10.009}.
 
 Witten D. M., Tibshirani R.,  and Hastie, T. (2009) \doi{10.1093/biostatistics/kxp008}.
-
-Must be downloaded from https://tibshirani.su.domains/PMA/
 }
 \keyword{datasets}

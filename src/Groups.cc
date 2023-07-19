@@ -193,6 +193,7 @@ int Groups::addNewGroup(double lambda, double mu, MaxFlowGraph* m, bool initial)
     g.active=true;
     g.deriv = m->getGroupDeriv();
     g.m = m;
+    g.action = 'M'; // Added by Naras
     g.endLambda=infinite;
     g.size = m->size();
     
