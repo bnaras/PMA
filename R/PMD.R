@@ -118,13 +118,13 @@ CheckPMDV <-  function(v,x,K){
   if(!is.null(v) && is.matrix(v) && ncol(v)>=K){
     v <- matrix(v[,1:K], ncol=K)
   } else if(ncol(x)>nrow(x)){
-    x[is.na(x)] <- mean.na(x)
+    x[is.na(x)] <- mean_na(x)
     v <- matrix(t(x)%*%(safesvd(x%*%t(x))$v[,1:K]),ncol=K)
     if(sum(is.na(v))>0) v <- matrix(safesvd(x)$v[,1:K], ncol=K)
     v <- sweep(v,2,apply(v, 2, l2n), "/")
     if(sum(is.na(v))>0) stop("some are NA")
   } else if (ncol(x)<=nrow(x)){
-    x[is.na(x)] <- mean.na(x)
+    x[is.na(x)] <- mean_na(x)
     v <- matrix(safesvd(t(x)%*%x)$v[,1:K],ncol=K)
   }
   return(v)
@@ -254,8 +254,8 @@ SPC <- function(x, sumabsv=4, niter=20, K=1, orth=FALSE, trace=TRUE, v=NULL, cen
     v <- matrix(out$v, ncol=K)
     ve <- NULL # variance explained
     xfill <- x
-    if(center) xfill <- x-mean.na(x)
-    xfill[is.na(x)] <- mean.na(xfill)
+    if(center) xfill <- x-mean_na(x)
+    xfill[is.na(x)] <- mean_na(xfill)
     for(k in 1:K){
       vk <- matrix(v[,1:k], ncol=k)
       xk <- xfill%*%vk%*%solve(t(vk)%*%vk)%*%t(vk)
@@ -602,7 +602,7 @@ PMD.cv <- function(x, type=c("standard", "ordered"), sumabss=seq(0.1,0.7,len=10)
 
 PMDL1L1 <- function(x,sumabs=.4,sumabsu=NULL,sumabsv=NULL,niter=20,K=1,v=NULL, trace=TRUE, orth=FALSE, center=TRUE, rnames=NULL, cnames=NULL, upos=upos, uneg=uneg, vpos=vpos, vneg=vneg){
   if(center){
-    meanx <- mean.na(x)
+    meanx <- mean_na(x)
     x <- x-meanx
   } else {
     meanx <- NULL
@@ -619,7 +619,7 @@ PMDL1L1 <- function(x,sumabs=.4,sumabsu=NULL,sumabsv=NULL,niter=20,K=1,v=NULL, t
     sumabsv <- sqrt(ncol(x))*sumabs
   }
   call <-  match.call()
-  if(trace && abs(mean.na(x)) > 1e-15) warning("PMDL1L1 was run without first subtracting out the mean of x.")
+  if(trace && abs(mean_na(x)) > 1e-15) warning("PMDL1L1 was run without first subtracting out the mean of x.")
   if(!is.null(sumabsu) && (sumabsu<1 || sumabsu>sqrt(nrow(x)))) stop("sumabsu must be between 1 and sqrt(n)")
   if(!is.null(sumabsv) && (sumabsv<1 || sumabsv>sqrt(ncol(x)))) stop("sumabsv must be between 1 and sqrt(p)")
   v <- CheckPMDV(v,x,K)
