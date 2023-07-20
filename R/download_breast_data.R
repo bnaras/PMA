@@ -1,4 +1,4 @@
-#' Download the breast data file and load it in this session
+#' Download and return the breast data
 #'
 #' @description
 #' Breast cancer gene expression + DNA copy number data set from Chin
@@ -13,6 +13,7 @@
 #'
 #' Missing values were imputed using 5-nearest neighbors (see library
 #' `pamr`).
+#' @param url source, default `"https://tibshirani.su.domains/PMA/breastdata.rda"`
 #' @return a list containing the following elements:
 #' - `dna`: a 2149x89 matrix of CGH spots x Samples
 #' - `rna`: a 19672x89 matrix of Genes x Samples
@@ -30,10 +31,10 @@
 #' Witten D. M., Tibshirani R.,  and Hastie, T. (2009) \doi{10.1093/biostatistics/kxp008}.
 #' @importFrom utils download.file
 #' @export download_breast_data
-download_breast_data <- function() {
+download_breast_data <- function(url = "https://tibshirani.su.domains/PMA/breastdata.rda") {
   tmpdir <- tempdir()
   filepath <- file.path(tmpdir, "breastdata.rda")
-  utils::download.file("https://tibshirani.su.domains/PMA/breastdata.rda", filepath)
+  utils::download.file(url, filepath)
   e <- new.env()
   load(filepath, envir = e)
   e$breastdata

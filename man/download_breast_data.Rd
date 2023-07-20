@@ -2,9 +2,12 @@
 % Please edit documentation in R/download_breast_data.R
 \name{download_breast_data}
 \alias{download_breast_data}
-\title{Download the breast data file and load it in this session}
+\title{Download and return the breast data}
 \usage{
-download_breast_data()
+download_breast_data(url = "https://tibshirani.su.domains/PMA/breastdata.rda")
+}
+\arguments{
+\item{url}{source, default \code{"https://tibshirani.su.domains/PMA/breastdata.rda"}}
 }
 \value{
 a list containing the following elements:

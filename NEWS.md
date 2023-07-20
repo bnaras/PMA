@@ -1,3 +1,7 @@
+# PMA 1.2-2
+- Lots of clean up of C++ code
+- Added function for data download for breast data
+
 # PMA 1.2-1
 
 - Default `xnames` and `znames` to the colnames of `x` and `y`
