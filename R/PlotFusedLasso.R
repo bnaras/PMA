@@ -29,21 +29,22 @@
 #' Witten D. M., Tibshirani R.,  and Hastie, T. (2009)
 #' \emph{A penalized matrix decomposition, with applications to sparse principal components and canonical correlation analysis}, \emph{Biostatistics, Gol 10 (3), 515-534, Jul 2009}\cr
 #' @examples
-#'
+#' \dontrun{
 #' # Use breast data
-#' data(breastdata)
-#' attach(breastdata)
-#'
+#' breastdata <- download_breast_data()
+#' with(breastdata, {
 #' # dna contains CGH data and chrom contains chromosome of each CGH spot;
 #' # nuc contains position of each CGH spot.
 #' dna <- t(dna)
+#' ch1 <- which(chrom == 1)
 #' PlotCGH(dna[1,],chrom=chrom,nuc=nuc,main="Sample 1: All Chromosomes")
-#' PlotCGH(dna[1,chrom==1], chrom=chrom[chrom==1], nuc=nuc[chrom==1],
+#' PlotCGH(dna[1,ch1], chrom=chrom[ch1], nuc=nuc[ch1],
 #' main= "Sample 1: Chrom 1")
-#' PlotCGH(dna[1,chrom<=3], chrom=chrom[chrom<=3], nuc=nuc[chrom<=3],
+#' chlt3 = which(chrom <= 3)
+#' PlotCGH(dna[1,chlt3], chrom=chrom[chlt3], nuc=nuc[chlt3],
 #'  main="Sample 1: Chroms 1, 2, and 3")
-#' detach(breastdata)
-#'
+#' } )
+#' }
 #' @export PlotCGH
 PlotCGH <- function(array,chrom=NULL,nuc=NULL,main="", scaleEachChrom=TRUE){
   if(is.null(chrom)){
@@ -87,3 +88,4 @@ plot_CGH_FL_Single<-function(array, chr, nucposi, main=""){
     text(-.05*max(nucposi),jp,labels=chrj,cex=.7)
   }
 }
+

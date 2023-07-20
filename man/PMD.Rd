@@ -167,16 +167,18 @@ print(out2)
 # Now check out PMD with L1 penalty on rows and fused lasso penalty on
 # columns: type="ordered". We'll use the Chin et al (2006) Cancer Cell
 # data set; try "?breastdata" for more info.
-data(breastdata)
-attach(breastdata)
+\dontrun{
+breastdata <- download_breast_data()
+with(breastdata, {
 # dna contains CGH data and chrom contains chromosome of each CGH spot;
 # nuc contains position of each CGH spot.
 dna <- t(dna) # Need samples on rows and CGH spots on columns
 # First, look for shared regions of gain/loss on chromosome 1.
 # Use cross-validation to choose tuning parameter value
 par(mar=c(2,2,2,2))
-cv.out <- PMD.cv(dna[,chrom==1],type="ordered",chrom=chrom[chrom==1],
-nuc=nuc[chrom==1],
+ch1 = which(chrom == 1)
+cv.out <- PMD.cv(dna[, ch1],type="ordered",chrom=chrom[ch1],
+nuc=nuc[ch1],
 sumabsus=seq(1, sqrt(nrow(dna)), len=15))
 print(cv.out)
 plot(cv.out)
@@ -195,14 +197,8 @@ PlotCGH(dna[88,chrom==1], chrom=chrom[chrom==1],
 main=paste("Sample 88; u=", sep="", round(out$u[88,1],3)),
 nuc=nuc[chrom==1])
 PlotCGH(out$v[,1],chrom=chrom[chrom==1], main="V",nuc=nuc[chrom==1])
-
-
-detach(breastdata)
-
-
-
-
-
+} )
+}
 }
 \references{
 Witten D. M., Tibshirani R.,  and Hastie, T. (2009)
