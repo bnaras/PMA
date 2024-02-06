@@ -1,3 +1,8 @@
+# PMA-1.2-3
+- Maintainer change (tibs -> naras). 
+- Fix CRAN warnings
+
+
 # PMA 1.2-2
 - Lots of clean up of C++ code
 - Added function for data download for breast data
