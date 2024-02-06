@@ -237,7 +237,8 @@ void FLSAGeneral::doMerging(double lambda, int grp1, int grp2)
         // print a status message
         if(showProgress)
         {
-            Rprintf("Lambda: %f Action: M Groups: %d, %d Sizes: %d, %d\n",lambda, grp1, grp2, grp1Nodes.size(), grp2Nodes.size());
+            Rprintf("Lambda: %f Action: M Groups: %d, %d Sizes: %zu, %zu\n",lambda, grp1, grp2,
+		    grp1Nodes.size(), grp2Nodes.size());
         }
         
         // merge the nodes and get the new subgraph and set up the new group
