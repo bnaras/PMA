@@ -24,4 +24,23 @@ nice plots for DNA copy number data.
 \references{
 Witten D. M., Tibshirani R.,  and Hastie, T. (2009) \doi{10.1093/biostatistics/kxp008}.
 }
-\keyword{package}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/bnaras/PMA}
+  \item Report bugs at \url{https://github.com/bnaras/PMA/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Balasubramanian Narasimhan \email{naras@stanford.edu}
+
+Authors:
+\itemize{
+  \item Daniela Witten
+  \item Rob Tibshirani \email{tibs@stanford.edu}
+  \item Sam Gross
+}
+
+}
+\keyword{internal}

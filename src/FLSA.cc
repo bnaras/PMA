@@ -228,32 +228,32 @@ SEXP FLSAClass::prepSolTree(int numGrps)
 {
     // prepare the list for the solution tree
     SEXP solTree;
-    PROTECT(solTree=allocVector(VECSXP,5));
+    PROTECT(solTree=Rf_allocVector(VECSXP,5));
     
     // set the names of the components
 
     // SEXP names = getAttrib(solTree, R_NamesSymbol);  // Why bother if it is being clobbered next?
     SEXP names;
-    PROTECT(names = allocVector(STRSXP,5));
-    SET_STRING_ELT(names, 0, mkChar("mu"));
-    SET_STRING_ELT(names, 1, mkChar("deriv"));
-    SET_STRING_ELT(names, 2, mkChar("mergeLambda"));
-    SET_STRING_ELT(names, 3, mkChar("mergeTo"));
-    SET_STRING_ELT(names, 4, mkChar("numVars"));
-    setAttrib(solTree, R_NamesSymbol, names);
+    PROTECT(names = Rf_allocVector(STRSXP,5));
+    SET_STRING_ELT(names, 0, Rf_mkChar("mu"));
+    SET_STRING_ELT(names, 1, Rf_mkChar("deriv"));
+    SET_STRING_ELT(names, 2, Rf_mkChar("mergeLambda"));
+    SET_STRING_ELT(names, 3, Rf_mkChar("mergeTo"));
+    SET_STRING_ELT(names, 4, Rf_mkChar("numVars"));
+    Rf_setAttrib(solTree, R_NamesSymbol, names);
     
     // now set the the class attribute to FLSA
     SEXP classStr;
-    PROTECT(classStr = allocVector(STRSXP,1));
-    SET_STRING_ELT(classStr, 0, mkChar("FLSA"));
-    classgets(solTree, classStr);
+    PROTECT(classStr = Rf_allocVector(STRSXP,1));
+    SET_STRING_ELT(classStr, 0, Rf_mkChar("FLSA"));
+    Rf_classgets(solTree, classStr);
     
     // generate teh vectors for the list of the right length
-    SET_VECTOR_ELT(solTree,0, allocVector(REALSXP,numGrps));
-    SET_VECTOR_ELT(solTree,1, allocVector(REALSXP,numGrps));
-    SET_VECTOR_ELT(solTree,2, allocVector(REALSXP,numGrps));
-    SET_VECTOR_ELT(solTree,3, allocVector(INTSXP,numGrps));
-    SET_VECTOR_ELT(solTree,4, allocVector(INTSXP,1));
+    SET_VECTOR_ELT(solTree,0, Rf_allocVector(REALSXP,numGrps));
+    SET_VECTOR_ELT(solTree,1, Rf_allocVector(REALSXP,numGrps));
+    SET_VECTOR_ELT(solTree,2, Rf_allocVector(REALSXP,numGrps));
+    SET_VECTOR_ELT(solTree,3, Rf_allocVector(INTSXP,numGrps));
+    SET_VECTOR_ELT(solTree,4, Rf_allocVector(INTSXP,1));
     
     UNPROTECT(3);
     return(solTree);
@@ -326,16 +326,16 @@ void FLSAClass::printGroupMove()
 void FLSAClass::checkInput(SEXP y)
 {
    // first check that y is a numeric vector
-    if(!isNumeric(y))
+    if(!Rf_isNumeric(y))
     {
-        error("y has to be a numeric vector");
+        Rf_error("y has to be a numeric vector");
     };
     
     // check that y is of at least length 2
     int len = LENGTH(y);
     if(len<2)
     {
-        error("y has to be of length at least 2");
+        Rf_error("y has to be of length at least 2");
     };
 }
 
@@ -401,7 +401,7 @@ SEXP FLSAexplicitSolution(SEXP solTree, SEXP lambdaR)
     // get a matrix in which to save the results 
     int lambdaLen = LENGTH(lambdaR);
     double* lambda = REAL(lambdaR);
-    PROTECT(resMat = allocMatrix(REALSXP, lambdaLen, numVars));
+    PROTECT(resMat = Rf_allocMatrix(REALSXP, lambdaLen, numVars));
     double* resMatVec = REAL(resMat); // for easier access
     int currGrp, currMatPos; // save the group that is currently in use
     double currLambda; // saves what the lambda level is 

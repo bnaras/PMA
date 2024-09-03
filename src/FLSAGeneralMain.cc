@@ -173,7 +173,7 @@ SEXP conn2Dim(SEXP dimensions)
     SEXP conn, bar;
     int dimRow = INTEGER(dimensions)[0];
     int dimCol = INTEGER(dimensions)[1];
-    PROTECT(conn = allocVector(VECSXP, dimRow*dimCol));
+    PROTECT(conn = Rf_allocVector(VECSXP, dimRow*dimCol));
     
     list<int> foo; // used to temporarily save the connections
     int counter = 0;
@@ -186,7 +186,7 @@ SEXP conn2Dim(SEXP dimensions)
             foo=pointConn(i,j,dimRow,dimCol,counter);
             
             // now copy it into an R vector
-            PROTECT(bar= allocVector(INTSXP, foo.size()));
+            PROTECT(bar= Rf_allocVector(INTSXP, foo.size()));
             for(int k=0; k<LENGTH(bar); ++k)
             {
                 INTEGER(bar)[k] = foo.front();

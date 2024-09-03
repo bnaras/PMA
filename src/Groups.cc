@@ -41,44 +41,44 @@ void Groups::updateNodeMap(set<int> nodes, int grp, bool initial)
 SEXP Groups::solutionObjectInit()
 {
     SEXP solObj;
-    PROTECT(solObj = allocVector(VECSXP,11));
+    PROTECT(solObj = Rf_allocVector(VECSXP,11));
     // give the 8 elements names 
     SEXP names;
-    PROTECT(names = allocVector(STRSXP,11));
-    SET_STRING_ELT(names,0,mkChar("Number"));
-    SET_STRING_ELT(names,1,mkChar("BeginLambda"));
-    SET_STRING_ELT(names,2,mkChar("EndLambda"));
-    SET_STRING_ELT(names,3,mkChar("Mu"));
-    SET_STRING_ELT(names,4,mkChar("Derivative"));
-    SET_STRING_ELT(names,5,mkChar("Action"));
-    SET_STRING_ELT(names,6,mkChar("Group1"));
-    SET_STRING_ELT(names,7,mkChar("Group2"));
-    SET_STRING_ELT(names,8,mkChar("Group1Nodes"));
-    SET_STRING_ELT(names,9,mkChar("Size"));
-    SET_STRING_ELT(names,10,mkChar("InitialNodeMap"));
-    setAttrib(solObj, R_NamesSymbol, names);
+    PROTECT(names = Rf_allocVector(STRSXP,11));
+    SET_STRING_ELT(names,0,Rf_mkChar("Number"));
+    SET_STRING_ELT(names,1,Rf_mkChar("BeginLambda"));
+    SET_STRING_ELT(names,2,Rf_mkChar("EndLambda"));
+    SET_STRING_ELT(names,3,Rf_mkChar("Mu"));
+    SET_STRING_ELT(names,4,Rf_mkChar("Derivative"));
+    SET_STRING_ELT(names,5,Rf_mkChar("Action"));
+    SET_STRING_ELT(names,6,Rf_mkChar("Group1"));
+    SET_STRING_ELT(names,7,Rf_mkChar("Group2"));
+    SET_STRING_ELT(names,8,Rf_mkChar("Group1Nodes"));
+    SET_STRING_ELT(names,9,Rf_mkChar("Size"));
+    SET_STRING_ELT(names,10,Rf_mkChar("InitialNodeMap"));
+    Rf_setAttrib(solObj, R_NamesSymbol, names);
     UNPROTECT(1);
     
     // give the object a class
     SEXP className;
-    PROTECT(className=allocVector(STRSXP,1));
-    SET_STRING_ELT(className,0,mkChar("FLSAGeneral"));
-    classgets(solObj,className);
+    PROTECT(className=Rf_allocVector(STRSXP,1));
+    SET_STRING_ELT(className,0,Rf_mkChar("FLSAGeneral"));
+    Rf_classgets(solObj,className);
     UNPROTECT(1);
     
     // install the right vectors in the list
     int numGroups = groups.size();
-    SET_VECTOR_ELT(solObj,0,allocVector(INTSXP,numGroups));
-    SET_VECTOR_ELT(solObj,1,allocVector(REALSXP,numGroups));
-    SET_VECTOR_ELT(solObj,2,allocVector(REALSXP,numGroups));
-    SET_VECTOR_ELT(solObj,3,allocVector(REALSXP,numGroups));
-    SET_VECTOR_ELT(solObj,4,allocVector(REALSXP,numGroups));
-    SET_VECTOR_ELT(solObj,5,allocVector(INTSXP,numGroups));
-    SET_VECTOR_ELT(solObj,6,allocVector(INTSXP,numGroups));
-    SET_VECTOR_ELT(solObj,7,allocVector(INTSXP,numGroups));
-    SET_VECTOR_ELT(solObj,8,allocVector(VECSXP,numGroups));
-    SET_VECTOR_ELT(solObj,9,allocVector(INTSXP,numGroups));
-    SET_VECTOR_ELT(solObj,10,allocVector(INTSXP,initialNodeMap.size()));
+    SET_VECTOR_ELT(solObj,0,Rf_allocVector(INTSXP,numGroups));
+    SET_VECTOR_ELT(solObj,1,Rf_allocVector(REALSXP,numGroups));
+    SET_VECTOR_ELT(solObj,2,Rf_allocVector(REALSXP,numGroups));
+    SET_VECTOR_ELT(solObj,3,Rf_allocVector(REALSXP,numGroups));
+    SET_VECTOR_ELT(solObj,4,Rf_allocVector(REALSXP,numGroups));
+    SET_VECTOR_ELT(solObj,5,Rf_allocVector(INTSXP,numGroups));
+    SET_VECTOR_ELT(solObj,6,Rf_allocVector(INTSXP,numGroups));
+    SET_VECTOR_ELT(solObj,7,Rf_allocVector(INTSXP,numGroups));
+    SET_VECTOR_ELT(solObj,8,Rf_allocVector(VECSXP,numGroups));
+    SET_VECTOR_ELT(solObj,9,Rf_allocVector(INTSXP,numGroups));
+    SET_VECTOR_ELT(solObj,10,Rf_allocVector(INTSXP,initialNodeMap.size()));
     UNPROTECT(1);
     return(solObj);
 }
@@ -111,7 +111,7 @@ SEXP Groups::getSolutionObject()
             int numSplitNodes = grpObj.splitNodes.size();
             set<int>::iterator setIt;
             int i;
-            SET_VECTOR_ELT(VECTOR_ELT(solObj,8),grp,allocVector(INTSXP,numSplitNodes));
+            SET_VECTOR_ELT(VECTOR_ELT(solObj,8),grp,Rf_allocVector(INTSXP,numSplitNodes));
             for(i=0, setIt = grpObj.splitNodes.begin(); i<numSplitNodes;++setIt, ++i)
             {
                 INTEGER(VECTOR_ELT(VECTOR_ELT(solObj,8),grp))[i]=*setIt;
@@ -355,7 +355,7 @@ SEXP Groups::solution(SEXP nodes, SEXP lambdas)
     // get a vector of the right size in R
     // the nodes will be in the columns, the lambdas in the rows
     SEXP sol;
-    PROTECT(sol=allocMatrix(REALSXP,lambdasLen, nodesLen));
+    PROTECT(sol=Rf_allocMatrix(REALSXP,lambdasLen, nodesLen));
     double *solMat = REAL(sol);
     // go through all the nodes
     int counter=0;
@@ -372,10 +372,10 @@ SEXP Groups::solution(SEXP nodes, SEXP lambdas)
     
     // the names for the matrix will be the numbers of the nodes and lamba
     SEXP dimnames;
-    PROTECT(dimnames = allocVector(VECSXP,2));
+    PROTECT(dimnames = Rf_allocVector(VECSXP,2));
     SET_VECTOR_ELT(dimnames,0,lambdas);
     SET_VECTOR_ELT(dimnames,1,nodes);
-    setAttrib(sol,R_DimNamesSymbol, dimnames);
+    Rf_setAttrib(sol,R_DimNamesSymbol, dimnames);
     UNPROTECT(2);
     return(sol);
 }

@@ -16,10 +16,9 @@
 #'
 #' @name PMA-package
 #' @aliases PMA-package PMA
-#' @docType package
 #' @useDynLib PMA
 #' @references
 #' Witten D. M., Tibshirani R.,  and Hastie, T. (2009) \doi{10.1093/biostatistics/kxp008}.
-#' @keywords package
-NULL
+#' @keywords internal
+"_PACKAGE"
 

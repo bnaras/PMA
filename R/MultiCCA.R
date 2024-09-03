@@ -358,6 +358,8 @@ MultiCCA <- function(xlist, penalty=NULL, ws=NULL, niter=25, type="standard", nc
   return(out)
 }
 
+#' @method print MultiCCA
+#' @export
 print.MultiCCA <- function(x,...){
   cat("Call: ")
   dput(x$call)

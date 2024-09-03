@@ -189,7 +189,7 @@ void FLSAGeneral::runAlgorithm()
     }
     if(groups.size() >= maxGroupNumber) 
     {
-        error("Number of groups too large. Try increasing the tolerance!\n");
+        Rf_error("Number of groups too large. Try increasing the tolerance!\n");
     }
 }
 
